@@ -10,30 +10,35 @@ import ReactDOM from 'react-dom';
 const App = ({ children }) => (
 
   <div class="col 12">
-    <Header />
+
+    <Header /> 
+
     <div class="row">
 
-    	<div class="col s2 blue-grey lighten-6">
+    	<div class="col s2 blue-grey lighten-6 z-depth-1">
 
-    	Navigation bar 
+    	<h5> Query History </h5> 
+
+      <p>fakequery1</p>
 
     	</div> 
 
-		    <div class="col s5 blue-grey lighten-4">
+  		  <div class="col s5 blue-grey lighten-4">
 
-		   			<Search />
+  		   			<Search />
 
-			</div> 
+        </div>
 
-		<div class="col s5 light-blue lighten-4">
+  		<div class="col s5 light-blue lighten-4">
 
-		 Shared tab goes here
+  		 Shared tab goes here
 
-		</div>
+      </div> 
 
-   	</div>
+    </div>
 
     <Footer />
+
   </div>
 
 );

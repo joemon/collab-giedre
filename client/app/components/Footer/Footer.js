@@ -3,7 +3,8 @@ import React from 'react';
 const Footer = () => (
   <footer>
 
-		I am footer
+		© 2018 Giedre Stulgyte @ Glasgow University
+
   
   </footer>
 );

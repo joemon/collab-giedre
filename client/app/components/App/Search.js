@@ -23,6 +23,7 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     console.log('A query was submitted: ' + this.state.query);
+
     event.preventDefault();
   }
 
@@ -51,7 +52,9 @@ class Search extends React.Component {
                 <input type="submit"/>
             </form>
 
-            <div> <SearchResults query={this.state.query}></SearchResults> </div>
+            <div> 
+              <SearchResults query={this.state.query}/> 
+            </div>
 
             </div> 
             <div class = "col s12" id="bing"> 
