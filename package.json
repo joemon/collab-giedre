@@ -69,6 +69,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.1.4",
+    "react-split-pane": "^0.1.82",
     "react-svg": "^4.0.13",
     "react-toastify": "^4.1.0",
     "recompose": "^0.27.1",
