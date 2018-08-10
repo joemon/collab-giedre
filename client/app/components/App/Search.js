@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchResults from "../App/SearchResults";
 import BingSearch from "../App/BingSearch";
+import axios from 'axios';
 
 class Search extends React.Component {
 
@@ -18,26 +19,21 @@ class Search extends React.Component {
 
   }
 
-
-
   handleChange(event) {
     this.setState({query: event.target.value})
   }
 
   handleSubmit(event) {
     console.log('A query was submitted: ' + this.state.query);
+     event.preventDefault();
     this.postQuery(this.state.query)
-
-    event.preventDefault();
   }
 
   postQuery(value) {
+
     console.log('Attempting to save a query');
-    axios.post('./server/routes/api/queries', {
+    axios.post('/server/routes/api/queries', {
       content:value
-    })
-    .then(function(value) {
-      console.log(value + ' successfully added to the list');
     })
   }
 
