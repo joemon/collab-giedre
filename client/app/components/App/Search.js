@@ -15,7 +15,10 @@ class Search extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
+
+
 
   handleChange(event) {
     this.setState({query: event.target.value})
@@ -23,8 +26,19 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     console.log('A query was submitted: ' + this.state.query);
+    this.postQuery(this.state.query)
 
     event.preventDefault();
+  }
+
+  postQuery(value) {
+    console.log('Attempting to save a query');
+    axios.post('./server/routes/api/queries', {
+      content:value
+    })
+    .then(function(value) {
+      console.log(value + ' successfully added to the list');
+    })
   }
 
   render() {  
@@ -35,19 +49,10 @@ class Search extends React.Component {
         <div class = "row">
    
             <div class = "col s12"> 
-              <ul class = "tabs">
-                <li class = "tab col s6"> 
-                  <a href ="#google">Google Search</a> 
-                </li> 
-                <li class = "tab col s6"> 
-                  <a href ="#bing">Bing Search</a> 
-                </li>
-              </ul>
-            <div class = "col s12" id="google"> 
-
+             
             <form onSubmit={this.handleSubmit}>
                 <label>
-                    Enter a search query: <input type="text" query={this.state.query} onChange={this.handleChange} />
+                     Enter a search query: <input type="text" query={this.state.query} onSubmit={() => this.postQuery(value)} onChange={this.handleChange} />
                 </label>
                 <input type="submit"/>
             </form>
@@ -62,7 +67,6 @@ class Search extends React.Component {
             </div> 
           </div>
 
-        </div>
     )
   }
 }

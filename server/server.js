@@ -1,3 +1,4 @@
+const Query = require("../models/queryModel");
 const express = require("express");
 const fs = require("fs");
 const historyApiFallback = require("connect-history-api-fallback");
@@ -16,8 +17,8 @@ const port = process.env.PORT || 8080;
 
 // Configuration
 // ================================================================================================
-
 // Set up Mongoose
+mongoose.connect(config.db_dev);
 // mongoose.connect(isDev ? config.db_dev : config.db);
 mongoose.connect(config.db);
 mongoose.connection
@@ -82,6 +83,23 @@ app.listen(port, "0.0.0.0", err => {
   }
 
   console.info(">>> 🌎 Open http://localhost:%s/ in your browser.", port);
+});
+
+app.post('./server/routes/api/queries', (req, res) => {
+  const doc = new Query({ query: req.body.query })
+  doc.save();
+});
+
+
+app.post('./server/routes/api/queries', (req, res) => {
+  var query = new Query (req.body);
+  query.save((err, doc) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(doc);
+    }
+  });
 });
 
 module.exports = app;
